@@ -1,10 +1,12 @@
+require('./Models/User');
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./Routes/authRoutes');
+const bodyParser = require('body-parser');
 
 
 const app = express();
-
+app.use(bodyParser.json());
 app.use(authRoutes);
 
 // String that allows the connection to the MongoDB. Created by generating a new cluster.
