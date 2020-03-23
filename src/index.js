@@ -1,13 +1,16 @@
 require('./Models/User');
+require('./Models/Track');
 const express = require('express');
 const mongoose = require('mongoose');
 const authRoutes = require('./Routes/authRoutes');
 const bodyParser = require('body-parser');
 const requireAuth = require('./Middlewares/requireAuth');
+const trackRoutes = require('./Routes/trackRoutes');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(authRoutes);
+app.use(trackRoutes);
 
 // String that allows the connection to the MongoDB. Created by generating a new cluster.
 const mongoUri = 'mongodb+srv://admin:Password123!@cluster0-dm14h.mongodb.net/test?retryWrites=true&w=majority';

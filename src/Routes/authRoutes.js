@@ -23,7 +23,7 @@ router.post('/signin', async (req,res) => {
 
   const user = await User.findOne({email});
   if(!user) return res.status(404).send({error: 'Invalid Credentials'});
-  
+
   try {
     await user.comparePassword(password);
     const token = jwt.sign({userId: user._id}, 'VoodooRanger')
@@ -31,9 +31,6 @@ router.post('/signin', async (req,res) => {
   } catch (err) {
     return res.status(422).send({error: 'Invalid Credentials'})
   }
-  
-
-
 });
 
 
