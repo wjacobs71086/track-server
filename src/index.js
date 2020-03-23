@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const authRoutes = require('./Routes/authRoutes');
+
 
 const app = express();
+
+app.use(authRoutes);
 
 // String that allows the connection to the MongoDB. Created by generating a new cluster.
 const mongoUri = 'mongodb+srv://admin:Password123!@cluster0-dm14h.mongodb.net/test?retryWrites=true&w=majority';
@@ -28,5 +32,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(' i hear you on port 3000')
+  console.log('i hear you on port 3000')
 })
